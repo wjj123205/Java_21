@@ -6,4 +6,4 @@ git commit -m "分支功能开发说明"
 git push origin feature/login
 git checkout main
 git pull origin main
-git merge 新分支名
+git merge feature/login
