@@ -21,7 +21,7 @@ Estimator 类：程序入口，通过接口多态特性，动态切换不同的�
 2. 快速使用步骤
 步骤 1：获取代码
 克隆本项目仓库到本地：
-git clone https://github.com/你的用户名/项目名称_学号后两位.git
+git clone https://github.com/wjj123205/Java_21.git
 进入项目目录，找到 Estimator.java 文件（所有核心逻辑均在单个文件中，无需额外配置）。
 步骤 2：编译运行
 方式 1：命令行运行
@@ -53,7 +53,7 @@ plaintext
 2. 贡献步骤
 Fork 仓库：点击 GitHub 仓库页面右上角的「Fork」按钮，将项目复制到你的个人仓库；
 克隆分支：将你 Fork 后的仓库克隆到本地，并创建新的功能分支（分支名格式：feature/功能名称 或 fix/问题描述）：
-git clone https://github.com/你的用户名/项目名称_学号后两位.git
+git clone https://github.com/wjj123205/Java_21.git
 git checkout -b feature/weighted-average  # 示例：新增加权平均功能
 开发与测试：基于新分支进行代码开发，确保新增功能可正常运行，无语法错误；
 3. 开发规范
