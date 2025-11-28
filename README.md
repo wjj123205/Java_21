@@ -1,9 +1,63 @@
-# Java_21
-git clone https://github.com/wjj123205/Java_21.git
-git checkout -b feature/login
-git add .
-git commit -m "分支功能开发说明"
-git push origin feature/login
-git checkout main
-git pull origin main
-git merge feature/login
+平均成绩计算器（Average Estimator）项目介绍
+一、项目介绍
+本项目是基于 Java 语言开发的轻量级平均成绩计算工具，核心采用接口多实现设计模式，提供两种不同场景的平均值计算方案：体操比赛评分（去掉最高分和最低分后的平均分）与班级考试平均分（算术平均分）。项目结构简洁、逻辑清晰，既适配实际业务场景需求，又能直观体现面向接口编程的灵活性，适合作为 Java 基础语法与设计模式的实践案例。
+二、功能说明
+核心接口
+CompurerAverage 接口（注：接口名存在拼写笔误，标准应为 ComputeAverage）：定义统一的平均值计算方法 average(double x[])，为不同计算场景提供规范接口。
+实现类功能
+Gymnastics 类：体操评分专用计算
+功能：接收评委打分数组，先对数组进行降序排序，去掉 1 个最高分和 1 个最低分，计算剩余分数的平均值（避免极端分数影响结果）。
+边界处理：若数组长度≤2（无足够分数可剔除），返回 0.0。
+适用场景：体操、跳水等竞技比赛的评分计算。
+School 类：常规算术平均计算
+功能：接收成绩数组，计算所有元素的算术平均值（总和 ÷ 元素个数）。
+适用场景：班级考试成绩、日常测评等需要统计整体平均水平的场景。
+主程序功能
+Estimator 类：程序入口，通过接口多态特性，动态切换不同的计算实现，分别对体操评分数组和班级考试成绩数组进行计算，并格式化输出结果。
+三、使用方法
+1. 环境准备
+开发 / 运行环境：JDK 8 及以上版本
+无需额外依赖，纯 Java 原生代码实现
+2. 快速使用步骤
+步骤 1：获取代码
+克隆本项目仓库到本地：
+git clone https://github.com/你的用户名/项目名称_学号后两位.git
+进入项目目录，找到 Estimator.java 文件（所有核心逻辑均在单个文件中，无需额外配置）。
+步骤 2：编译运行
+方式 1：命令行运行
+打开终端，进入 Estimator.java 所在目录；
+编译代码：javac Estimator.java；
+运行程序：java Estimator；
+查看输出结果（体操选手得分与班级考试平均分）。
+方式 2：IDE 运行
+打开 IDE（如 IntelliJ IDEA、Eclipse），创建新的 Java 项目；
+新建 Estimator.java 文件，复制粘贴项目代码；
+右键点击文件，选择「Run Estimator.main ()」，即可执行。
+步骤 3：自定义数据计算
+如需计算自定义数组的平均值，修改 main 方法中的数组数据即可：
+定义新的 double 类型数组（如 double c[] = {85.5, 92.0, 78.5, 90.0}）；
+通过 CompurerAverage computer = new 实现类名() 选择计算方式（Gymnastics 或 School）；
+调用 computer.average(自定义数组) 得到结果，可通过 System.out.printf 格式化输出。
+3. 输出示例
+plaintext
+体操选手最后得分: 9.775
+班级考试平均分数:74.18  
+四、贡献指南
+欢迎各位同学参与项目优化与功能扩展，贡献流程如下：
+1. 贡献方向
+修复已知问题：修正 CompurerAverage 接口的拼写错误（改为 ComputeAverage），确保命名规范；
+功能扩展：新增平均值计算方式（如加权平均、几何平均），需实现 CompurerAverage 接口并添加对应的实现类；
+性能优化：优化 Gymnastics 类的排序逻辑（当前为冒泡排序，可替换为更高效的排序算法如 Arrays.sort ()）；
+边界处理增强：添加数组为空、数组元素为负数等异常场景的处理（如抛出非法参数异常、返回合理提示）；
+文档完善：补充代码注释、扩展使用示例（如批量计算多个数组、读取文件中的数据进行计算）。
+2. 贡献步骤
+Fork 仓库：点击 GitHub 仓库页面右上角的「Fork」按钮，将项目复制到你的个人仓库；
+克隆分支：将你 Fork 后的仓库克隆到本地，并创建新的功能分支（分支名格式：feature/功能名称 或 fix/问题描述）：
+git clone https://github.com/你的用户名/项目名称_学号后两位.git
+git checkout -b feature/weighted-average  # 示例：新增加权平均功能
+开发与测试：基于新分支进行代码开发，确保新增功能可正常运行，无语法错误；
+3. 开发规范
+代码风格：遵循 Java 编码规范（变量名、方法名采用小驼峰命名，类名采用大驼峰命名）；
+新增功能需同步更新 README.md 的「功能说明」和「使用方法」；
+提交代码时需附带清晰的 commit 信息（格式：类型：描述，如 fix：修正接口命名拼写错误）；
+如需添加依赖，需在 PR 中说明依赖用途，优先使用 Java 原生类库，避免引入第三方依赖。
